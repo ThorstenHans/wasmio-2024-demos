@@ -1,0 +1,20 @@
+spin_manifest_version = 2
+
+[application]
+name = "api"
+version = "0.1.0"
+authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "api"
+
+[component.api]
+source = "composed.wasm"
+sqlite_databases = ["default"]
+allowed_outbound_hosts = ["http://localhost:3001"]
+
+[component.api.build]
+command = "cargo component build  --release"
+watch = ["src/**/*.rs", "Cargo.toml"]

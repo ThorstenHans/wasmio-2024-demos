@@ -1,0 +1,17 @@
+spin_manifest_version = "1"
+authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
+description = ""
+name = "consumer-py"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "consumer-py"
+source = "composed.wasm"
+key_value_stores = ["default"]
+
+[component.trigger]
+route = "/..."
+[component.build]
+command = "spin py2wasm app -o app.wasm"
+watch = ["app.py", "Pipfile"]

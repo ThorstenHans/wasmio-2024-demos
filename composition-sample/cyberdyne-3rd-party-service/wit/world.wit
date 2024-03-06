@@ -1,0 +1,5 @@
+package fermyon:webhooks-consumer@0.1.0;
+
+world middlewares {
+    import fermyon:hmac/verify@0.1.0;
+}

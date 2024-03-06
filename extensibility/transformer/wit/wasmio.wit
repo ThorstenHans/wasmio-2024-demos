@@ -1,0 +1,5 @@
+package wasmio:samples;
+
+world extensibility {
+    import transform: func(input: string) -> string;
+}

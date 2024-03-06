@@ -1,0 +1,19 @@
+spin_manifest_version = 2
+
+[application]
+name = "consumer"
+version = "0.1.0"
+authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "consumer"
+
+[component.consumer]
+source = "composed.wasm"
+allowed_outbound_hosts = []
+sqlite_databases = ["default"]
+[component.consumer.build]
+command = "cargo component build --release"
+watch = ["src/**/*.rs", "Cargo.toml"]

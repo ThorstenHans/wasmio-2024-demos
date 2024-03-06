@@ -1,0 +1,5 @@
+package wasmio:samples;
+
+world plugin {
+    export transform: func(input: string) -> string;
+}
