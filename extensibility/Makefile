@@ -1,5 +1,12 @@
 .PHONY build-app-plugins: build-uppercase build-obfuscate build-reverse
 
+.PHONY build-reverse:
+build-reverse:
+	pushd plugins; \
+	pushd reverse; \
+	jco componentize reverse.js --wit ./wit/wasmio.wit -o reverse.wasm; \
+	wasm-tools strip ./reverse.wasm -o ../../reverse.wasm
+
 .PHONY build-uppercase:
 build-uppercase: 
 	pushd plugins; \
@@ -13,13 +20,6 @@ build-obfuscate:
 	pushd obfuscate; \
 	cargo component build --target wasm32-unknown-unknown --release; \
 	mv ./target/wasm32-unknown-unknown/release/obfuscate.wasm ../../
-
-.PHONY build-reverse:
-build-reverse:
-	pushd plugins; \
-	pushd reverse; \
-	jco componentize reverse.js --wit ./wit/wasmio.wit -o reverse.wasm; \
-	wasm-tools strip ./reverse.wasm -o ../../reverse.wasm
 
 .PHONY build-host:
 build-host:

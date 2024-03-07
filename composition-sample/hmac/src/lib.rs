@@ -9,6 +9,15 @@ mod bindings;
 
 struct Component;
 
+impl sign::Guest for Component {
+    fn sign(data: Vec<u8>, keyvalue: Vec<u8>) -> Result<Vec<u8>, Error> {
+        let key = hmac::Key::new(hmac::HMAC_SHA256, &keyvalue);
+        let signature = hmac::sign(&key, &data);
+        let tag = HEXUPPER.encode(signature.as_ref());
+        Ok(tag.into_bytes())
+    }
+}
+
 impl verify::Guest for Component {
     fn verify(data: Vec<u8>, keyvalue: Vec<u8>, tag: Vec<u8>) -> bool {
         let key = hmac::Key::new(hmac::HMAC_SHA256, &keyvalue);
@@ -19,15 +28,5 @@ impl verify::Guest for Component {
             Ok(_) => true,
             _ => false,
         }
-    }
-}
-
-impl sign::Guest for Component {
-    fn sign(data: Vec<u8>, keyvalue: Vec<u8>) -> Result<Vec<u8>, Error> {
-        let key = hmac::Key::new(hmac::HMAC_SHA256, &keyvalue);
-        // let message = "Legitimate and important message.";
-        let signature = hmac::sign(&key, &data);
-        let tag = HEXUPPER.encode(signature.as_ref());
-        Ok(tag.into_bytes())
     }
 }

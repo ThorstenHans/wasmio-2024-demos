@@ -6,10 +6,6 @@ world signing {
     export verify;
 }
 
-interface types {
-    type error = string;
-}
-
 interface sign {
     use types.{error};
     sign: func(data: list<u8>, keyvalue: list<u8>) -> result<list<u8>, error>;
@@ -19,5 +15,6 @@ interface verify {
     verify: func(data: list<u8>, keyvalue: list<u8>, tag: list<u8>) -> bool;
 }
 
-
-
+interface types {
+    type error = string;
+}

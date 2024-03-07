@@ -1,5 +1,5 @@
 [package]
-name = "consumer"
+name = "cyberdyne"
 authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
 description = ""
 version = "0.1.0"
@@ -15,7 +15,6 @@ serde = { version = "1.0.197", features = ["derive"] }
 serde_json = "1.0.114"
 spin-sdk = "2.2.0"
 wit-bindgen = "0.19.1"
-
 
 [workspace]
 [package.metadata.component]

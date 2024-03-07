@@ -1,5 +1,5 @@
 [package]
-name = "api"
+name = "acme"
 authors = ["Thorsten Hans <thorsten.hans@fermyon.com>"]
 description = ""
 version = "0.1.0"

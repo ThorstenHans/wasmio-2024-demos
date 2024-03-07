@@ -19,10 +19,10 @@ pub struct SamplePayload {
 #[http_component]
 fn handle_simple_http_api(req: Request) -> anyhow::Result<impl IntoResponse> {
     let mut router = Router::default();
-    router.post_async("/register", register_webhook);
+    router.post_async("/registrations", register_webhook);
+    router.get("/registrations", dump_registrations);
     router.delete("/registrations", delete_all_registrations);
     router.post_async("/fire", demonstrate_firing);
-    router.get("/registrations", dump_registrations);
     Ok(router.handle(req))
 }
 
@@ -47,16 +47,18 @@ async fn demonstrate_firing(_: Request, _: Params) -> anyhow::Result<impl IntoRe
         let signature = sign(&payload, &reg.signing_key.as_bytes())
             .map(|by| String::from_utf8(by).unwrap())
             .unwrap();
-        // let signature = sign(payload.as_ref(), &reg.signing_key).unwrap();
+
         let req = Request::builder()
             .method(Method::Post)
             .uri(reg.url.clone())
             .header("X-Signature", signature)
             .body(payload)
             .build();
+
         let response: Response = spin_sdk::http::send(req).await?;
+
         println!(
-            "webhook {}. Responded with {}",
+            "webhook {}. Responded with status {}",
             reg.url.clone(),
             response.status()
         );

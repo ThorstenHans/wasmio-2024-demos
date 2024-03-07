@@ -1,0 +1,194 @@
+{
+  "$schema": "https://elio.dev/demo-time.schema.json",
+  "title": "Wasm I/O: Demo 2",
+  "description": "WebAssembly Components: Middlewares & Portability",
+  "demos": [
+    {
+      "title": "HMAC: Highlight Singing World",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/hmac/wit/world.wit",
+          "position": "3:16"
+        }
+      ]
+    },
+    {
+      "title": "HMAC: Link the .wit package in Cargo.toml",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/hmac/Cargo.toml",
+          "position": "17:20"
+        }
+      ]
+    },
+    {
+      "title": "HMAC: Implement the Sign Export",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/hmac/src/lib.rs",
+          "position": "12:19"
+        }
+      ]
+    },
+    {
+      "title": "HMAC: Implement the Verify Export",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/hmac/src/lib.rs",
+          "position": "21:32"
+        }
+      ]
+    },
+    {
+      "title": "HMAC: Show how to build the component",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/hmac/Makefile",
+          "position": "1:3"
+        }
+      ]
+    },
+    {
+      "title": "ACME Product: HTTP API",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/acme-product/src/lib.rs",
+          "position": "22:25"
+        }
+      ]
+    },
+    {
+      "title": "ACME Product: Import Sign",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/acme-product/wit/world.wit",
+          "position": "3:5"
+        }
+      ]
+    },
+    {
+      "title": "ACME Product: Specify Package Metadata",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/acme-product/Cargo.toml",
+          "position": "22:26"
+        }
+      ]
+    },
+    {
+      "title": "ACME Product: Create the payload for the webhook",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/acme-product/src/lib.rs",
+          "position": "42:45"
+        }
+      ]
+    },
+    {
+      "title": "ACME Product: Sign the payload by calling the sign export",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/acme-product/src/lib.rs",
+          "position": "47:49"
+        }
+      ]
+    },
+    {
+      "title": "ACME Product: Build and Compose",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/acme-product/Makefile",
+          "position": "1:4"
+        }
+      ]
+    },
+    {
+      "title": "WONKA: Bring WIT world",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/wonka-3rd-party-service/wit/world.wit",
+          "position": "3:5"
+        }
+      ]
+    },
+    {
+      "title": "WONKA: import verify capability",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/wonka-3rd-party-service/app.py",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "title": "WONKA: Grab Signature Tag",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/wonka-3rd-party-service/app.py",
+          "position": "20:22"
+        }
+      ]
+    },
+    {
+      "title": "WONKA: Load Key Data",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/wonka-3rd-party-service/app.py",
+          "position": 24
+        }
+      ]
+    },
+    {
+      "title": "WONKA: Verify Integrity of the payload",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/wonka-3rd-party-service/app.py",
+          "position": 27
+        }
+      ]
+    },
+    {
+      "title": "WONKA: Build and Compose",
+      "description": "",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "/wonka-3rd-party-service/Makefile",
+          "position": "1:7"
+        }
+      ]
+    }
+  ]
+}
