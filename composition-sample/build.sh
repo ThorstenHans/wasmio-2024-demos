@@ -29,5 +29,5 @@ wasm-tools compose -d ./hmac/target/wasm32-wasi/release/hmac.wasm ./acme-product
 echo "Composing Cyberdyne Service..."
 wasm-tools compose -d ./hmac/target/wasm32-wasi/release/hmac.wasm ./cyberdyne-3rd-party-service/target/wasm32-wasi/release/consumer.wasm -o ./cyberdyne-3rd-party-service/composed.wasm
 
-echo "Composing Wonka Service
+echo "Composing Wonka Service..."
  wasm-tools compose -d ./hmac/target/wasm32-wasi/release/hmac.wasm ./wonka-3rd-party-service/app.wasm -o ./wonka-3rd-party-service/composed.wasm 
