@@ -13,7 +13,7 @@ component = "api"
 [component.api]
 source = "composed.wasm"
 sqlite_databases = ["default"]
-allowed_outbound_hosts = ["http://localhost:3001"]
+allowed_outbound_hosts = ["http://localhost:3001", "http://localhost:3002"]
 
 [component.api.build]
 command = "cargo component build  --release"
