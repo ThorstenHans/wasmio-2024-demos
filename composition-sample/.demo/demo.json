@@ -64,7 +64,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/acme-product/src/lib.rs",
+          "path": "/acme/src/lib.rs",
           "position": "22:25"
         }
       ]
@@ -75,7 +75,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/acme-product/wit/world.wit",
+          "path": "/acme/wit/world.wit",
           "position": "3:5"
         }
       ]
@@ -86,7 +86,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/acme-product/Cargo.toml",
+          "path": "/acme/Cargo.toml",
           "position": "22:26"
         }
       ]
@@ -97,7 +97,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/acme-product/src/lib.rs",
+          "path": "/acme/src/lib.rs",
           "position": "42:45"
         }
       ]
@@ -108,7 +108,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/acme-product/src/lib.rs",
+          "path": "/acme/src/lib.rs",
           "position": "47:49"
         }
       ]
@@ -119,7 +119,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/acme-product/Makefile",
+          "path": "/acme/Makefile",
           "position": "1:4"
         }
       ]
@@ -130,7 +130,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/wonka-3rd-party-service/wit/world.wit",
+          "path": "/wonka/wit/world.wit",
           "position": "3:5"
         }
       ]
@@ -141,7 +141,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/wonka-3rd-party-service/app.py",
+          "path": "/wonka/app.py",
           "position": 4
         }
       ]
@@ -152,7 +152,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/wonka-3rd-party-service/app.py",
+          "path": "/wonka/app.py",
           "position": "20:22"
         }
       ]
@@ -163,7 +163,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/wonka-3rd-party-service/app.py",
+          "path": "/wonka/app.py",
           "position": 24
         }
       ]
@@ -174,7 +174,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/wonka-3rd-party-service/app.py",
+          "path": "/wonka/app.py",
           "position": 27
         }
       ]
@@ -185,7 +185,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "/wonka-3rd-party-service/Makefile",
+          "path": "/wonka/Makefile",
           "position": "1:7"
         }
       ]
