@@ -1,4 +1,4 @@
-.PHONY build-app-plugins: build-uppercase build-obfuscate build-reverse
+.PHONY build-all-plugins: build-uppercase build-obfuscate build-reverse
 
 .PHONY build-reverse:
 build-reverse:
@@ -34,3 +34,7 @@ run:
 .PHONY activate-all-plugins:
 activate-all-plugins:
 	cp *.wasm ./active/
+
+.PHONY deactivate-all-plugins:
+deactivate-all-plugins:
+	rm ./active/*.wasm
