@@ -8,7 +8,7 @@ impl Guest for Component {
         input
             .chars()
             .map(|x| match x {
-                ' ' | 'A' | 'E' | 'U' | 'O' | 'I' | 'a' | 'e' | 'u' | 'o' | 'i' => '*',
+                'A' | 'E' | 'U' | 'O' | 'I' | 'a' | 'e' | 'u' | 'o' | 'i' => '*',
                 _ => x,
             })
             .collect()
