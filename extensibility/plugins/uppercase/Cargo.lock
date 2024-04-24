@@ -13,6 +13,7 @@ name = "uppercase"
 version = "0.1.0"
 dependencies = [
  "wit-bindgen",
+ "wit-bindgen-rt",
 ]
 
 [[package]]
