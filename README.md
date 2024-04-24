@@ -4,6 +4,8 @@ This repository contains all samples shown as part of my talk about the WebAssem
 
 Both of the following samples have dedicated READMEs to outline how one could build & run them.
 
+You can find the recording of the talk on YouTube here: [https://www.youtube.com/watch?v=NFbjQNqWi94](https://www.youtube.com/watch?v=NFbjQNqWi94).
+
 ## Extensibility
 
 The [extensibility](./extensibility/) demo illustrates how one could use the WebAssembly Component Model to add extensibility to their own application. By relying on WIT contract, extension developers can use any language - that could be compiled into WebAssembly and packaged as a Wasm Component - and use the canonical ABI provided by the component model.
