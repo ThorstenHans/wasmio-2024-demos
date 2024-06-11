@@ -4,7 +4,7 @@ mod bindings;
 struct Component;
 
 impl Guest for Component {
-    fn transform(input: wit_bindgen::rt::string::String) -> wit_bindgen::rt::string::String {
+    fn transform(input: String) -> String {
         input
             .chars()
             .map(|x| match x {
@@ -14,3 +14,5 @@ impl Guest for Component {
             .collect()
     }
 }
+
+bindings::export!(Component with_types_in bindings);
