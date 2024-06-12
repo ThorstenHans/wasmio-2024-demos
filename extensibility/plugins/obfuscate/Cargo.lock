@@ -13,20 +13,23 @@ name = "obfuscate"
 version = "0.1.0"
 dependencies = [
  "wit-bindgen",
+ "wit-bindgen-rt",
 ]
 
 [[package]]
 name = "wit-bindgen"
-version = "0.21.0"
+version = "0.24.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dbdedb8dd38c89c2cfa71e7450515f1c17f94cc2853881652d005b10f3f2559c"
+checksum = "9fb4e7653763780be47e38f479e9aa83c768aa6a3b2ed086dc2826fdbbb7e7f5"
 dependencies = [
- "bitflags",
  "wit-bindgen-rt",
 ]
 
 [[package]]
 name = "wit-bindgen-rt"
-version = "0.21.0"
+version = "0.24.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "026d24a27f6712541fa534f2954bd9e0eb66172f033c2157c0f31d106255c497"
+checksum = "3b0780cf7046630ed70f689a098cd8d56c5c3b22f2a7379bbdb088879963ff96"
+dependencies = [
+ "bitflags",
+]

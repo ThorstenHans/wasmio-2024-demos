@@ -5,6 +5,7 @@ use wasmtime::{
     component::{Component, Linker, Val},
     Config, Engine, Store,
 };
+use wasmtime_wasi::{ResourceTable, WasiCtx, WasiCtxBuilder, WasiView};
 wasmtime::component::bindgen!("extensibility");
 
 fn process_transformers(mut message: String) -> anyhow::Result<String> {
@@ -15,16 +16,22 @@ fn process_transformers(mut message: String) -> anyhow::Result<String> {
     let engine = Engine::new(&config)?;
     let plugins = get_plugins_from_path("../active")?;
 
-    if plugins.len() == 0 {
+    if plugins.is_empty() {
         println!("No transformers found. We'll keep it as it is");
         return Ok(message.clone());
     }
 
-    let mut linker = Linker::new(&engine);
-    Extensibility::add_to_linker(&mut linker, |state: &mut HostState| state)?;
+    let mut linker = Linker::<MyState>::new(&engine);
+    wasmtime_wasi::add_to_linker_sync(&mut linker)?;
 
     for plugin in plugins.iter() {
-        let mut store = Store::new(&engine, HostState::default());
+        let mut store = Store::new(
+            &engine,
+            MyState {
+                ctx: WasiCtxBuilder::new().build(),
+                table: ResourceTable::new(),
+            },
+        );
 
         // Load Component from the .wasm file
         let component = Component::from_file(&engine, plugin).map_err(|e| {
@@ -33,12 +40,8 @@ fn process_transformers(mut message: String) -> anyhow::Result<String> {
         })?;
 
         // Instantiate the Component
-        let (_, instance) =
-            Extensibility::instantiate(&mut store, &component, &linker).map_err(|e| {
-                println!("Error while instantiating component {:?}", e);
-                e
-            })?;
-        let params = vec![Val::String(message.clone().into())];
+        let instance = linker.instantiate(&mut store, &component)?;
+        let params = vec![Val::String(message.clone())];
         let mut results = vec![Val::String("".into())];
 
         // Look for the transform function
@@ -48,7 +51,7 @@ fn process_transformers(mut message: String) -> anyhow::Result<String> {
         };
 
         // invoke the transform function
-        _ = match f.call(store, &params, &mut results) {
+        match f.call(store, &params, &mut results) {
             Ok(_) => (),
             Err(_) => {
                 println!("Plugin {:?} failed upon invocation", plugin);
@@ -56,7 +59,7 @@ fn process_transformers(mut message: String) -> anyhow::Result<String> {
             }
         };
         message = match &results[0] {
-            Val::String(s) => String::from(s.as_ref()),
+            Val::String(s) => String::from(s),
             _ => unreachable!(),
         };
     }
@@ -88,15 +91,9 @@ fn main() -> Result<()> {
 struct HostState;
 
 impl ExtensibilityImports for HostState {
-    fn transform(&mut self, input: String) -> wasmtime::Result<String> {
+    fn transform(&mut self, input: String) -> String {
         println!("Received {}", input);
-        Ok(input)
-    }
-}
-
-impl Default for HostState {
-    fn default() -> Self {
-        Self {}
+        input
     }
 }
 
@@ -124,4 +121,14 @@ fn validate_user_input(input: &String) -> Result<(), Error> {
         std::io::ErrorKind::Unsupported,
         "Funny! Please provide something",
     ))
+}
+
+struct MyState {
+    ctx: WasiCtx,
+    table: ResourceTable,
+}
+
+impl WasiView for MyState {
+    fn ctx(&mut self) -> &mut WasiCtx { &mut self.ctx }
+    fn table(&mut self) -> &mut ResourceTable { &mut self.table }
 }
